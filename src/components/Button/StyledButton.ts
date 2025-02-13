@@ -11,6 +11,7 @@ export const ButtonStyled = styled.button<ButtonStyledProps>`
   color: #fff;
   border: 0;
   font-weight: 600;
+  font-size: 16px;
   border-radius: 4px;
   font-family: "Archivo", sans-serif;
   cursor: pointer;

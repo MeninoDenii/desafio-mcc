@@ -52,7 +52,7 @@ export const Title = styled.h1`
   font-weight: 600;
 `;
 
-export const Subtitle = styled.text`
+export const Subtitle = styled.h4`
   font-family: "Archivo", sans-serif;
   font-size: 20px;
   color: #1a202c;
