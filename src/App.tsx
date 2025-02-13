@@ -1,4 +1,4 @@
-import { Input } from "./components";
+import { Button } from "./components";
 import { GlobalStyle } from "./globalStyle";
 // import { LoginPage } from "./pages";
 
@@ -6,7 +6,7 @@ function App() {
   return (
     <>
       <GlobalStyle />
-      <Input label="Teste" width="400px" placeholder="exemplo@gmail.com" />
+      <Button width="400px">Entrar na conta</Button>
     </>
   );
 }
