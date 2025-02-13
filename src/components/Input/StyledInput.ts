@@ -21,7 +21,6 @@ export const Label = styled.label<LabelProps>`
   color: #222529;
   font-family: "Archivo", sans-serif;
   font-weight: 500;
-  text-transform: capitalize;
 
   ${(props) =>
     props.required &&
