@@ -17,9 +17,9 @@ export const Container = styled.div<ContainerProps>`
 `;
 
 export const Label = styled.label<LabelProps>`
-  font-size: 16px;
+  font-size: 18px;
   color: #222529;
-  font-family: "Roboto", sans-serif;
+  font-family: "Archivo", sans-serif;
   font-weight: 500;
   text-transform: capitalize;
 
@@ -35,13 +35,13 @@ export const Label = styled.label<LabelProps>`
 
 export const InputContainer = styled.div<InputContainerProps>`
   border: ${(props) =>
-    props.error ? "1px solid #DD0404" : "1px solid #dedede"};
+    props.error ? "1px solid #DD0404" : "1px solid #E8E8E8"};
   border-radius: 6px;
   display: flex;
-  background-color: #fdfdfd;
+  background-color: #f7fafc;
   align-items: center;
   margin-top: 8px;
-  font-family: "Inter", sans-serif;
+  font-family: "Archivo", sans-serif;
 
   input {
     height: 40px;
@@ -63,5 +63,5 @@ export const MessageError = styled.span`
   font-size: 14px;
   margin-top: 8px;
   display: block;
-  font-family: "Roboto", sans-serif;
+  font-family: "Archivo", sans-serif;
 `;

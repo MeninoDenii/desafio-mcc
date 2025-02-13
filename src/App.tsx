@@ -1,11 +1,12 @@
+import { Input } from "./components";
 import { GlobalStyle } from "./globalStyle";
-import { LoginPage } from "./pages";
+// import { LoginPage } from "./pages";
 
 function App() {
   return (
     <>
       <GlobalStyle />
-      <LoginPage />
+      <Input label="Teste" width="400px" placeholder="exemplo@gmail.com" />
     </>
   );
 }
