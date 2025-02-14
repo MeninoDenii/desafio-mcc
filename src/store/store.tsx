@@ -6,6 +6,7 @@ interface User {
   name: string;
   email: string;
   password: string;
+  id?: string;
 }
 
 interface AuthState {
@@ -14,6 +15,7 @@ interface AuthState {
   register: (user: User) => void;
   login: (email: string, password: string) => void;
   logout: () => void;
+  success: boolean;
 }
 
 export const useAuthStore = create<AuthState>()(
@@ -21,19 +23,22 @@ export const useAuthStore = create<AuthState>()(
     (set, get) => ({
       users: [],
       currentUser: null,
+      success: false,
+
       register: (user: User) => {
         const { users } = get();
 
         const userExists = users.some((item) => item?.email === user?.email);
 
         if (userExists) {
-          toast.error("E-mail já cadastrado");
           return;
         }
 
         const newUser = { ...user };
-        set({ users: [...users, newUser], currentUser: newUser });
-        toast.success("Usuário cadastrado com sucesso");
+        set({
+          users: [...users, newUser],
+          currentUser: newUser,
+        });
       },
 
       login: (email, password) => {
@@ -44,15 +49,15 @@ export const useAuthStore = create<AuthState>()(
         );
 
         if (foundUser) {
-          set({ currentUser: foundUser });
-          toast.success("Usuário logado com sucesso!");
+          set({ currentUser: foundUser, success: true });
         } else {
-          toast.error("Usuário não encontrado!");
+          toast.error("Usuário ou senha inválidos");
+          set({ currentUser: null });
         }
       },
 
       logout: () => {
-        set({ currentUser: null });
+        set({ currentUser: null, success: false });
       },
     }),
     {

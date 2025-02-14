@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { registerValidator } from "../../validations/register/RegisterValidator";
 import { useAuthStore } from "../../store/store";
+import { v4 as uuidv4 } from "uuid";
 
 import {
   Container,
@@ -13,6 +14,7 @@ import {
   Footer,
   StyledLink,
 } from "./StyledRegisterPage";
+import { toast, ToastContainer } from "react-toastify";
 
 const RegisterPage = () => {
   const {
@@ -26,18 +28,30 @@ const RegisterPage = () => {
     mode: "onChange",
   });
 
-  const { register: registerUser } = useAuthStore();
+  const { register: registerUser, users } = useAuthStore();
 
   const navigate = useNavigate();
 
   const onSubmit = handleSubmit((data) => {
-    registerUser(data);
-    navigate("/");
-    reset();
+    const userExists = users.some((item) => item?.email === data?.email);
+
+    if (userExists) {
+      toast.error("Email já cadastrado na plataforma");
+    } else {
+      registerUser({
+        email: data?.email,
+        name: data?.name,
+        password: data?.password,
+        id: uuidv4(),
+      });
+      navigate("/");
+      reset();
+    }
   });
 
   return (
     <Container>
+      <ToastContainer />
       <Content>
         <Title>Cadastre-se na plataforma!</Title>
         <Form>
@@ -82,7 +96,7 @@ const RegisterPage = () => {
           <StyledLink to="/">Já tem uma conta? Faça login!</StyledLink>
         </Form>
         <Footer>
-          <Button type="submit" onClick={onSubmit} disabled={!isValid}>
+          <Button type="button" onClick={onSubmit} disabled={!isValid}>
             Cadastrar
           </Button>
         </Footer>
