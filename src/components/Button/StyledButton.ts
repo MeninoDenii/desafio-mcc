@@ -17,7 +17,14 @@ export const ButtonStyled = styled.button<ButtonStyledProps>`
   cursor: pointer;
   transition: all 0.3s;
 
-  &:hover {
-    filter: brightness(0.9);
+  &:disabled {
+    background-color: #a0a0a0;
+    cursor: not-allowed;
+  }
+
+  &:not(:disabled) {
+    &:hover {
+      filter: brightness(0.9);
+    }
   }
 `;
