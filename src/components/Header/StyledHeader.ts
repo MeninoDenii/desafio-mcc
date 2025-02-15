@@ -6,7 +6,7 @@ export const Container = styled.header`
   display: flex;
   align-items: center;
   font-family: "Archivo", sans-serif;
-  padding: 0 60px;
+  padding: 0 80px;
   justify-content: space-between;
 
   @media (max-width: 480px) {
