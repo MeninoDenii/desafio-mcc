@@ -20,7 +20,7 @@ const Pagination: React.FC<iPagination> = ({
 
   const renderPageNumbers = () => {
     const pages = [];
-    const maxPagesToShow = 3;
+    const maxPagesToShow = 5;
 
     let startPage = Math.max(1, currentPage - Math.floor(maxPagesToShow / 2));
     let endPage = startPage + maxPagesToShow - 1;

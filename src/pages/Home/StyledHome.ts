@@ -19,8 +19,8 @@ export const Mobile = styled.div`
     flex-direction: column;
     align-items: center;
     gap: 20px;
-    max-height: 600px;
-    height: 70vh;
+    max-height: 100%;
+    height: 100%;
     overflow-y: auto;
     padding: 10px;
   }

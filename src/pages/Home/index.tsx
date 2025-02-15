@@ -64,7 +64,7 @@ const HomePage = () => {
       });
   }, []);
 
-  const itemsPerPage = 3;
+  const itemsPerPage = 5;
 
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
