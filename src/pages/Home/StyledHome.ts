@@ -19,6 +19,10 @@ export const Mobile = styled.div`
     flex-direction: column;
     align-items: center;
     gap: 20px;
+    max-height: 600px;
+    height: 70vh;
+    overflow-y: auto;
+    padding: 10px;
   }
 `;
 
@@ -83,4 +87,13 @@ export const LoadingDiv = styled.div`
   align-items: center;
   justify-content: center;
   height: 80vh;
+`;
+
+export const ContainerPagination = styled.div`
+  display: none;
+
+  @media (max-width: 480px) {
+    display: block;
+    width: 100%;
+  }
 `;

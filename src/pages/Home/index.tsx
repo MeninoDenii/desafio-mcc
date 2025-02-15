@@ -1,6 +1,18 @@
 import { useEffect, useState } from "react";
-import { CardMobile, Footer, Header, Table } from "../../components";
-import { Container, Mobile, LoadingMobile, LoadingDiv } from "./StyledHome";
+import {
+  CardMobile,
+  Footer,
+  Header,
+  Pagination,
+  Table,
+} from "../../components";
+import {
+  Container,
+  Mobile,
+  LoadingMobile,
+  LoadingDiv,
+  ContainerPagination,
+} from "./StyledHome";
 import { toast, ToastContainer } from "react-toastify";
 import { useAuthStore } from "../../store/store";
 import { useNavigate } from "react-router";
@@ -28,8 +40,13 @@ interface iPlanets {
 const HomePage = () => {
   const [planets, setPlanets] = useState<iPlanets["results"]>();
   const [loading, setLoading] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
 
   const { currentUser, logout } = useAuthStore();
+
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
+  };
 
   useEffect(() => {
     setLoading(true);
@@ -46,6 +63,12 @@ const HomePage = () => {
         setLoading(false);
       });
   }, []);
+
+  const itemsPerPage = 3;
+
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const currentItems = planets?.slice(startIndex, endIndex);
 
   const navigate = useNavigate();
 
@@ -68,12 +91,21 @@ const HomePage = () => {
             </LoadingDiv>
           ) : (
             <>
-              {planets?.map((planet) => (
+              {currentItems?.map((planet) => (
                 <CardMobile planet={planet} key={planet.name} />
               ))}
             </>
           )}
         </Mobile>
+        {planets && (
+          <ContainerPagination>
+            <Pagination
+              currentPage={currentPage}
+              totalPages={Math.ceil((planets?.length || 0) / itemsPerPage)}
+              onPageChange={handlePageChange}
+            />
+          </ContainerPagination>
+        )}
       </Container>
       <Footer />
     </>
