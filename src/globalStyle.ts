@@ -4,6 +4,7 @@ export const GlobalStyle = createGlobalStyle`
   *, *::before, *::after {
     box-sizing: border-box;
     margin: 0;
+    font-family: 'Roboto', sans-serif;
     padding: 0;
   }
 
@@ -24,7 +25,7 @@ export const GlobalStyle = createGlobalStyle`
 
   html, body {
     height: 100%;
-    font-family: sans-serif;
+  
   }
 
   img {
