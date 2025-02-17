@@ -2,11 +2,19 @@ import styled from "styled-components";
 import { Link } from "react-router";
 
 export const Container = styled.div`
-  width: 100%;
-  height: 90vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+
+  @media (max-width: 480px) {
+    position: static;
+    width: 100%;
+  }
 `;
 
 export const Content = styled.div`
