@@ -50,6 +50,7 @@ export const useAuthStore = create<AuthState>()(
 
         if (foundUser) {
           set({ currentUser: foundUser, success: true });
+          window.location.href = "/home";
         } else {
           toast.error("Usuário ou senha inválidos");
           set({ currentUser: null });
