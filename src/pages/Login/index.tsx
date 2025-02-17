@@ -2,7 +2,6 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { loginValidator } from "../../validations/login/LoginValidator";
 import { useAuthStore } from "../../store/store";
-import { useNavigate } from "react-router";
 import {
   Container,
   ContentRight,
@@ -34,14 +33,11 @@ const LoginPage = () => {
 
   const { login, success } = useAuthStore();
 
-  const navigate = useNavigate();
-
   const onSubmit = handleSubmit((data) => {
     login(data?.email, data?.password);
 
     if (!success) return;
 
-    navigate("/home");
     reset();
   });
 
@@ -77,7 +73,7 @@ const LoginPage = () => {
               message={errors?.password ? errors?.password?.message : ""}
             />
 
-            <Button type="submit" onClick={onSubmit} disabled={!isValid}>
+            <Button type="button" onClick={onSubmit} disabled={!isValid}>
               Entrar na conta
             </Button>
           </Form>
